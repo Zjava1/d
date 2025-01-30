@@ -28,17 +28,34 @@
 
         #image2 {
             position: absolute;
-            top: 16.67%; /* Umieszcza obraz w 2/6 wysokości strony */
+            top: 7%; /* Umieszcza obraz wyżej */
             left: 50%;
             transform: translateX(-50%);
         }
 
-        #overlay {
+        #transparent-button {
             position: absolute;
-            top: 714px;
-            left: 50%;
+            top: 7%; /* Umieszcza przycisk nieco wyżej */
+            left: 30%;
             transform: translateX(-50%);
+            width: 50px; /* Dopasuj rozmiar do obrazu */
+            height: 50px; /* Dopasuj rozmiar do obrazu */
+            background: transparent;
+            border: none;
             cursor: pointer;
+            z-index: 10;
+        }
+
+        #second-button {
+            position: absolute;
+            top: 7%; /* Pozycja nowego przycisku nieco wyżej */
+            left: 60%;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
         }
 
         #gif-modal {
@@ -69,11 +86,13 @@
     </style>
     <script>
         function showGif() {
-            document.getElementById('gif-modal').style.display = 'flex';
+            const modal = document.getElementById('gif-modal');
+            modal.style.display = 'flex';
         }
 
         function hideGif() {
-            document.getElementById('gif-modal').style.display = 'none';
+            const modal = document.getElementById('gif-modal');
+            modal.style.display = 'none';
         }
     </script>
 </head>
@@ -85,13 +104,14 @@
     <!-- Obraz drugi -->
     <img id="image2" src="tak.png" alt="Obraz 2">
 
-    <!-- Nałożony obraz jako przycisk -->
-    <button id="overlay" onclick="showGif()">
-        <img src="kwadraty.png" alt="Kliknij, aby zobaczyć gif">
-    </button>
+    <!-- Przezroczysty przycisk -->
+    <button id="transparent-button" onclick="showGif()"></button>
 
-    <!-- Modal z gifem -->
-    <div id="gif-modal" onclick="hideGif()">
+    <!-- Drugi przezroczysty przycisk -->
+    <button id="second-button" onclick="showGif()"></button>
+
+    <!-- Modal z gifem (domyślnie ukryty) -->
+    <div id="gif-modal" style="display: none;" onclick="hideGif()">
         <img src="yay.gif" alt="Zapętlony GIF">
     </div>
 
